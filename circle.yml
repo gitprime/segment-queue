@@ -1,0 +1,12 @@
+# Tell circle which pythons we want
+dependencies:
+  override:
+    - pip install pip -U
+    - pip install tox
+    - pyenv local 2.7.10 3.4.3 3.5.0 pypy-2.5.0
+
+# Override CircleCI's auto-detection, which will otherwise also include Django
+# tests, which we don't use.
+test:
+  override:
+    - tox
