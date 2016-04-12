@@ -10,7 +10,7 @@ clean:
 	rm -rf dist/*
 
 build: clean
-	python setup.py bdist_wheel
+	python setup.py bdist_wheel sdist
 
 release: build
 	git push && git push --tags
