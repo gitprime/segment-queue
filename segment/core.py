@@ -40,6 +40,32 @@ class Analytics(object):
 
         return self._enqueue(data)
 
+    def group(self, user_id=None, group_id=None, traits=None, context=None,
+              timestamp=None, anonymous_id=None, integrations=None):
+        if user_id is None:
+            raise TypeError(u'User ID expected for group() calls, got None.')
+        if group_id is None:
+            raise TypeError(u'Group ID expected for group() calls, got None.')
+
+        require('group_id', group_id, ID_TYPES)
+        require('traits', traits, dict)
+
+        data = {
+            'write_key': self.write_key,
+            'kwargs': {
+                'integrations': integrations,
+                'anonymousId': anonymous_id,
+                'timestamp': timestamp,
+                'groupId': group_id,
+                'context': context,
+                'userId': user_id,
+                'traits': traits,
+                'type': 'group'
+            }
+        }
+
+        return self._enqueue(data)
+
     def _enqueue(self, data):
         """
         Enqueue event calls
