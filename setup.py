@@ -12,7 +12,7 @@ dependencies = [
 
 setup(
     name='segment-queue',
-    version='1.0.0',
+    version='1.1.0',
     url='https://github.com/gitprime/segment-queue',
     author='George Hickman',
     author_email='george@ghickman.co.uk',
